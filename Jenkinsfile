@@ -9,7 +9,11 @@ pipeline {
           ls -lah
         '''
       }
-
+    },
+    stage('Upload to AWS') {
+      steps {
+        s3Upload(file:'index.html', bucket:'mu-jenkins-repo', path:'index.html')
+      }
     }
   }
 
